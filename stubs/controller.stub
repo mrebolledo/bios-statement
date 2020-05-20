@@ -1,0 +1,27 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\App\Controllers\AbstractController;
+use Illuminate\Http\Request;
+
+class {{ class }} extends Controller
+{
+        public $title = '';
+
+        public function entity()
+        {
+        }
+
+        public function entityPath()
+        {
+            return '';
+        }
+
+        public function getColumns(): array
+        {
+            return [
+
+            ];
+        }
+}
