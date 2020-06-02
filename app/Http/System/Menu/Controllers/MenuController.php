@@ -33,8 +33,7 @@ class MenuController extends AbstractController
             'Icono',
             'Nombre',
             'Ruta',
-            'Parent',
-            'Acciones',
+            'Parent'
         ];
     }
 

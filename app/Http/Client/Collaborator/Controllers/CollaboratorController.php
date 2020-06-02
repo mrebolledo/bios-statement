@@ -31,8 +31,7 @@ class CollaboratorController extends AbstractController
             'Tipo',
             'Empresa',
             'Telefono',
-            'Email',
-            'Acciones'
+            'Email'
         ];
     }
 

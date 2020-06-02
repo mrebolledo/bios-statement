@@ -1,17 +1,8 @@
 @extends('app.CRUD.modal')
 @section('crud-content')
-    <div class="form-group">
-        <label class="form-label">Nombre</label>
-        <input type="text" class="form-control" name="first_name" @if($is_edit) value="{{ $record->first_name }}" @endif>
-    </div>
-    <div class="form-group">
-        <label class="form-label">Apellido</label>
-        <input type="text" class="form-control" name="last_name" @if($is_edit) value="{{ $record->last_name }}" @endif>
-    </div>
-    <div class="form-group">
-        <label class="form-label">Email</label>
-        <input type="text" class="form-control" name="email" @if($is_edit) value="{{ $record->email }}" @endif>
-    </div>
+    <x-input label="Nombre" name="first_name" :isEdit="$is_edit" :value="$record->first_name ?? null"></x-input>
+    <x-input label="Apellido" name="last_name" :isEdit="$is_edit" :value="$record->last_name ?? null"></x-input>
+    <x-input label="Email" name="emai" :isEdit="$is_edit" :value="$record->email ?? null"></x-input>
     <div id="roles">
         <h5>Roles</h5>
         @foreach($roles as $r)

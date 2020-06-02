@@ -21,8 +21,7 @@ class CollaboratorTypeController extends AbstractController
     public function getColumns(): array
     {
         return [
-            'Nombre',
-            'Acciones'
+            'Nombre'
         ];
     }
 

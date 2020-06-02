@@ -44,7 +44,8 @@ abstract class SerializeAbstract extends Controller
             'entity' => $this->getEntityName(),
             'title' => $this->makeTitle(),
             'records' => $this->resolveRecords(),
-            'depth' => $this->depth
+            'depth' => $this->depth,
+            'filter' => $this->filter
         ]);
     }
 
@@ -121,6 +122,10 @@ abstract class SerializeAbstract extends Controller
     {
         $records = json_decode($request->fields,true);
 
+        if($request->has('filter')) {
+            $this->filter = $request->filter;
+        }
+
         $i = 0;
         foreach($records as $record) {
             $entity = $this->entity::find($record['id']);
@@ -156,6 +161,14 @@ abstract class SerializeAbstract extends Controller
             }
             $i++;
         }
-        return response()->json(['success' => 'Serializado correctamente.']);
+        if($this->afterStore()) {
+            return response()->json(['success' => 'Serializado correctamente.']);
+        }
+        return response()->json(['error' => 'Hubo un error al serializar'],401);
+    }
+
+    protected function afterStore()
+    {
+        return true;
     }
 }

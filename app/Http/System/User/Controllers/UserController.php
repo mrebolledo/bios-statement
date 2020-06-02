@@ -45,8 +45,7 @@ class UserController extends AbstractController
         return [
             'Nombre',
             'Apellido',
-            'Email',
-            'Acciones',
+            'Email'
         ];
     }
 

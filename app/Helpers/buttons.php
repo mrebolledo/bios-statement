@@ -134,3 +134,11 @@ if (!function_exists('makeGroupedLinks')) {
         }
     }
 }
+
+if (!function_exists('makeBackButton'))
+{
+    function makeBackButton()
+    {
+        return makeLink(url()->previous(),'Volver', 'fa-arrow-left','btn-info','btn-sm');
+    }
+}

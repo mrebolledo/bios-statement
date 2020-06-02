@@ -75,8 +75,8 @@ class StatementController extends Controller
                             ]);
                         }
                         if($last_statement = $collaborator->statements()->orderBy('id','desc')->first()) {
-                            if(Carbon::now()->diffInDays(Carbon::parse($last_statement->statement_date)->toDateString()) < 7) {
-                                return response()->json(['error' => 'Posee una declaración vigente, realizada hace menos de 7 días.'],401);
+                            if(Carbon::now()->diffInDays(Carbon::parse($last_statement->statement_date)->toDateString()) < 14) {
+                                return response()->json(['error' => 'Posee una declaración vigente, realizada hace menos de 14 días.'],401);
                             }
                         }
                         $can_enter = 1;
@@ -155,8 +155,8 @@ class StatementController extends Controller
                             ]);
                         }
                         if($last_statement = $collaborator->statements()->orderBy('id','desc')->first()) {
-                            if(Carbon::now()->diffInDays(Carbon::parse($last_statement->statement_date)->toDateString()) < 7) {
-                                return response()->json(['error' => 'Posee una declaración vigente, realizada hace menos de 7 días.'],401);
+                            if(Carbon::now()->diffInDays(Carbon::parse($last_statement->statement_date)->toDateString()) < 14) {
+                                return response()->json(['error' => 'Posee una declaración vigente, realizada hace menos de 14 días.'],401);
                             }
                         }
                         return response()->json(['error' =>  'Ya existe una declaración vigente.'],401);

@@ -1,6 +1,6 @@
 @extends('app.components.modals.modal')
 @section('modal-title', 'Serializar: '.$title)
-@section('modal-icon','list-ol')
+@section('modal-icon','fa-list-ol')
 @section('modal-content')
     <link rel="stylesheet" href="{{ mix('/vendor/libs/nestable/nestable.css') }}">
     <script src="{{ mix('/vendor/libs/nestable/nestable.js') }}"></script>
@@ -68,5 +68,5 @@
     </script>
 @endsection
 @section('modal-validation')
-    {!!  makeValidation('serialization-form',route($entity.'.store-serialization'), "tableReload(); closeModal();") !!}
+    {!!  makeValidation('serialization-form',route($entity.'.store-serialization',['filter' => $filter]), "tableReload(); closeModal();") !!}
 @endsection

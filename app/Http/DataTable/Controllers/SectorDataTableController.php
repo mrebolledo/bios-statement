@@ -16,6 +16,7 @@ class SectorDataTableController extends DataTableAbstract
     {
         return [
             $record->name,
+            $record->grd_id,
             $record->zone->name,
             $this->getOptionButtons($record->id)
         ];

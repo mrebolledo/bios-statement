@@ -20,7 +20,7 @@ class SectorController extends AbstractController
 
         $level = PyramidLevel::findOrFail($request->filter);
         $this->request = $request;
-        $this->back = route('pyramid-levels.index',['filter' => $level->level_id]);
+        $this->back = route('pyramid-levels.index',['filter' => $level->pyramid_id]);
         $this->setTitle('Sectores Nivel: '.$level->name);
     }
 
@@ -38,15 +38,15 @@ class SectorController extends AbstractController
     {
         return [
             'Nombre',
-            'Zona',
-            'Acciones'
+            'Id Interno',
+            'Zona'
         ];
     }
 
     public function requiredVars()
     {
         return [
-            'level_id' => $this->request->filter,
+            'hidden_id' => $this->request->filter,
             'zones' => Zone::get()
         ];
     }
@@ -55,6 +55,7 @@ class SectorController extends AbstractController
     {
         return [
             'name' => 'required',
+            'grd_id' => 'required',
             'zone_id' => 'required'
         ];
     }

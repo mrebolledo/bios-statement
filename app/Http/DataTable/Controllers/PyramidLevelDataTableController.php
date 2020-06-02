@@ -18,6 +18,7 @@ class PyramidLevelDataTableController extends DataTableAbstract
     {
         return [
             $record->name,
+            $record->short_name,
             $record->sectors_count,
             $this->getOptionButtons($record)
         ];

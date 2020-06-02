@@ -24,6 +24,8 @@ abstract class AbstractController extends Controller
 
     public $extra_buttons = [];
 
+    public $action_column = true;
+
     public function __construct()
     {
         $this->entity = $this->resolveEntity();
@@ -40,7 +42,7 @@ abstract class AbstractController extends Controller
     public function index()
     {
         return view('app.CRUD.index', [
-            'columns' => $this->getColumns(),
+            'columns' => $this->resolveColumns(),
             'entity' => $this->getEntityName(),
             'title' => $this->makeTitle(),
             'icon' => $this->icon ?? 'fa-database',
@@ -48,6 +50,16 @@ abstract class AbstractController extends Controller
             'back' => $this->back ?? url()->previous(),
             'extra_buttons' => $this->getExtraButtons()
         ]);
+    }
+
+    public function resolveColumns()
+    {
+        if ($this->action_column) {
+            $array = $this->getColumns();
+            array_push($array,'Acciones');
+            return $array;
+        }
+        return $this->getColumns();
     }
 
     public function getExtraButtons() : array
@@ -80,11 +92,12 @@ abstract class AbstractController extends Controller
 
         $this->beforeStore($request);
         if ($record = $this->storeEntity($request)) {
-            $this->afterStore($request,$record);
-            return $this->getResponse('success.store');
-        } else {
-            return $this->getResponse('error.store');
+            if($this->afterStore($request,$record)) {
+                return $this->getResponse('success.store');
+            }
         }
+
+        return $this->getResponse('error.store');
     }
 
     protected function storeEntity(Request $request)

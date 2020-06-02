@@ -27,8 +27,7 @@ class RoleController extends AbstractController
     {
         return [
             'Nombre',
-            'Fecha de Creación',
-            'Acciones',
+            'Fecha de Creación'
         ];
     }
 

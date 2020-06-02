@@ -30,8 +30,7 @@ class PyramidController extends AbstractController
         return [
             'Nombre',
             'Fecha de creación',
-            'Niveles',
-            'Acciones'
+            'Niveles'
         ];
     }
 

@@ -14,7 +14,8 @@
                     $('#{{ $form }} .form-control').removeClass('is-invalid').addClass('is-valid');
                     $('.error-tooltip').remove();
                     toastr.success( "Se ha completado correctamente el formulario." , "Formulario Completado!" );
-                    form.prepend("<div class='alert alert-success alert-dismissible fade show'>"+json.success+"<button type='button' class='close' data-dismiss='alert'>×</button></div>");
+                    let messages = jQuery.parseJSON(response.responseText);
+                    form.prepend("<div class='alert alert-success alert-dismissible fade show'>"+messages.success+"<button type='button' class='close' data-dismiss='alert'>×</button></div>");
                     {!! $onSuccess !!}
                 },
                 error   : function ( response )

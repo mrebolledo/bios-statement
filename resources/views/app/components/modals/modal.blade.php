@@ -20,12 +20,34 @@
     @hasSection('no-submit')
         @yield('no-submit')
     @else
-        <button type="button" class="btn btn-primary" onClick="$('.modal-content form').submit();">Guardar</button>
+        @if(isset($requires_confirmation) && $requires_confirmation)
+            <button type="button" class="btn btn-primary" onClick="confirmFormAction();">Guardar</button>
+        @else
+            <button type="button" class="btn btn-primary" onClick="$('.modal-content form').submit();">Guardar</button>
+        @endif
     @endif
 </div>
 
 @yield('modal-validation')
 <script>
+    @if(isset($requires_confirmation) && $requires_confirmation)
+        function confirmFormAction()
+        {
+            Swal.fire({
+                title: "Esta accion requiere confirmación",
+                text:  'Presione "Si, Ejecutar" para realizar la acción' ,
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Si, Ejecutar"
+            }).then(function (result) {
+                if (result.value) {
+                    $('.modal-content form').submit();
+                } else {
+                    Swal.close();
+                }
+            });
+        }
+    @endif
 
     $('.fire-modal').on('click',function(e){
         e.preventDefault();

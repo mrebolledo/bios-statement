@@ -1,7 +1,4 @@
 @extends('app.CRUD.modal')
 @section('crud-content')
-    <div class="form-group">
-        <label class="form-label">Nombre</label>
-        <input type="text" class="form-control" name="name" @if($is_edit) value="{{ $record->name }}" @endif>
-    </div>
+    <x-input label="Nombre" name="name" :isEdit="$is_edit" :value="$record->name ?? null"></x-input>
 @endsection

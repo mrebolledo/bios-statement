@@ -29,8 +29,7 @@ class PermissionController extends AbstractController
     {
         return [
             'Nombre',
-            'Fecha de Creación',
-            'Acciones'
+            'Fecha de Creación'
         ];
     }
 

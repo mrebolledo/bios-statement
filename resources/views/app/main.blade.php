@@ -46,6 +46,8 @@
     <link rel="stylesheet" href="{{ mix('/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ mix('/vendor/libs/toastr/toastr.css')}}">
     <link rel="stylesheet" href="{{ mix('/vendor/libs/sweetalert2/sweetalert2.css') }}">
+    <link rel="stylesheet" href="{{ mix('/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ mix('/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css') }}">
     @yield('styles')
 </head>
 <body @hasSection('bg-color') class="@yield('bg-color')" @endif>
@@ -61,6 +63,9 @@
 <script src="{{ mix('/vendor/libs/sweetalert2/sweetalert2.js') }}"></script>
 <!-- Scripts -->
 <script src="{{ mix('/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+<script src="{{ mix('/vendor/libs/moment/moment.js') }}"></script>
+<script src="{{ mix('/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js') }}"></script>
+<script src="{{ mix('/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js') }}"></script>
 <script src="{{ mix('/js/demo.js') }}"></script>
 <script src="{{ asset('js/forms.js') }}"></script>
 

@@ -9,6 +9,7 @@ Route::middleware('auth')->group(function () {
     //system
     include_once 'includes/system.php';
     //DBS
+    include  'includes/dbs.php';
     include_once 'includes/dbs-maintainers.php';
     //Client
     include_once 'includes/client-maintainers.php';

@@ -12,7 +12,7 @@ class RevokePermissionsToCollaborators extends Controller
 {
     public function __invoke()
     {
-        $date = Carbon::now()->subDays(7)->toDateString();
+        $date = Carbon::now()->subDays(14)->toDateString();
         $collaborators = Collaborator::with(['statements' => function ($query) {
             $query->orderBy('id', 'desc');
         }])->has('statements')->get();

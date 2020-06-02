@@ -12,6 +12,7 @@ class ZoneDataTableController extends DataTableAbstract
     {
         return [
             $record->name,
+            $record->short_name,
             $this->getOptionButtons($record->id)
         ];
     }

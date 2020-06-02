@@ -26,14 +26,15 @@ class ZoneController extends AbstractController
     {
         return [
             'Nombre',
-            'Acciones'
+            'Nombre Corto'
         ];
     }
 
     public function validation()
     {
         return [
-            'name' => 'required|unique:zones,name'
+            'name' => 'required',
+            'short_name' => 'required'
         ];
     }
 }

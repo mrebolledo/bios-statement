@@ -34,7 +34,18 @@ Route::namespace('System')->group(function () {
     Route::get('/test','Test\Controllers\TestController');
 });
 
-
+//components
+Route::get('/getCombo',function(\Illuminate\Http\Request $request){
+    return view('system.components.combo',[
+        'label' => $request->label ?? null,
+        'name' => $request->name ?? null,
+        'display' => $request->display ?? 'name',
+        'entity' => $request->entity ?? null,
+        'filter' => $request->filter ?? null,
+        'filterField' => $request->filterField ?? null,
+        'functionNext' => $request->functionNext ?? false
+    ]);
+})->name('components.combo');
 //userProfile
 /* Route::get('profile', 'User\Profile\Controllers\UserProfileController@index')->name('user.profile');
  //userSettings

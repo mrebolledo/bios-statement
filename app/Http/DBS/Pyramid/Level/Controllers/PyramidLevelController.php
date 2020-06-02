@@ -3,12 +3,15 @@
 namespace App\Http\DBS\Pyramid\Level\Controllers;
 
 use App\App\Controllers\AbstractController;
+use App\App\Traits\DBS\Pyramid\HasLevelIntegrations;
 use App\Domain\DBS\Pyramid\Pyramid;
 use App\Domain\DBS\Pyramid\PyramidLevel;
 use Illuminate\Http\Request;
 
 class PyramidLevelController extends AbstractController
 {
+    use HasLevelIntegrations;
+
     public $icon = 'fa-sitemap';
 
     public $middle = true;
@@ -37,8 +40,8 @@ class PyramidLevelController extends AbstractController
     {
         return [
             'Nombre',
-            'Sectores',
-            'Acciones'
+            'Nombre Corto',
+            'Sectores'
         ];
     }
 
@@ -52,7 +55,8 @@ class PyramidLevelController extends AbstractController
     public function validation()
     {
         return [
-            'name' => 'required'
+            'name' => 'required',
+            'short_name' => 'required'
         ];
     }
 
@@ -65,5 +69,14 @@ class PyramidLevelController extends AbstractController
         }
 
         return parent::getExtraButtons();
+    }
+
+    public function afterStore(Request $request, $record)
+    {
+        if ($config = $record->pyramid->configuration) {
+            return $this->resolveLevelIntegration($record,$config);
+        }
+
+        return true;
     }
 }

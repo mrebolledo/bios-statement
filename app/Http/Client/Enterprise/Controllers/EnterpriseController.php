@@ -31,8 +31,7 @@ class EnterpriseController extends AbstractController
             'Representante',
             'Coordinador AS',
             'Email AS',
-            'Colaboradores',
-            'Acciones'
+            'Colaboradores'
         ];
     }
 

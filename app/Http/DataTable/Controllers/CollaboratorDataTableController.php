@@ -27,4 +27,23 @@ class CollaboratorDataTableController extends DataTableAbstract
             $this->getOptionButtons($record->id)
         ];
     }
+
+    public function getOptionButtons($id)
+    {
+        $user = auth()->user();
+        if ($user->hasAnyPermission([
+            'collaborators.edit','collaborators.delete','collaborators.sectors','collaborators.manage'
+        ])) {
+            if($user->hasPermissionTo('collaborators.sectors')) {
+                $sectorsButtons =  makeLink(route('collaborator.sectors',['collaborator' => $id]),'Sectores','fa-key','btn-primary','btn-md','true');
+            }
+            if($user->hasPermissionTo('collaborators.manage')) {
+                $manageButton =  makeLink(route('collaborator.manage',['collaborator_id' => $id]),'Administrar','fa-cog','btn-primary','btn-md','true');
+            }
+            return makeGroupedLinks(array_merge($this->getDefaultOptions($id),[
+                $sectorsButtons ?? '',
+                $manageButton ?? '',
+            ]));
+        }
+    }
 }

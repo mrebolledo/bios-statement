@@ -3,6 +3,7 @@
 namespace App\Domain\System\User;
 
 use App\Domain\Client\Collaborator\Collaborator;
+use App\Domain\DBS\Authorization\Authorization;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -49,5 +50,15 @@ class User extends Authenticatable
     public function collaborator()
     {
         return $this->hasOne(Collaborator::class,'user_id','id');
+    }
+
+    public function created_authorizations()
+    {
+        return $this->hasMany(Authorization::class,'creator_id','id');
+    }
+
+    public function authorizations()
+    {
+        return $this->morphMany(Authorization::class,'authorizable');
     }
 }
