@@ -49,6 +49,7 @@ class StatementController extends Controller
                 $worker = Trabajador::where('TrabajadorRut',explode('-',$request->rut)[0])
                     ->first();
                 if($worker) {
+
                     if(true) {
                         if(!$collaborator = Collaborator::findByIdentifier($request->rut)) {
                             $empresa = Empresa::where('EmpresaRut', $worker->EmpresaRut)->first();
@@ -76,6 +77,13 @@ class StatementController extends Controller
                         }
                         if($last_statement = $collaborator->statements()->orderBy('id','desc')->first()) {
                             if(Carbon::now()->diffInDays(Carbon::parse($last_statement->statement_date)->toDateString()) < 14) {
+                                if($worker->TrabajadorAutRRHH = 2) {
+                                    $worker->TrabajadorAutRRHH = 1;
+                                    $worker->TrabajadorMod = Carbon::now()->toDateTimeString();
+                                    $worker->TrabajadorUsu = 'SYS-COVID';
+                                    $worker->check = 1;
+                                    $worker->save();
+                                }
                                 return response()->json(['error' => 'Posee una declaración vigente, realizada hace menos de 14 días.'],401);
                             }
                         }
