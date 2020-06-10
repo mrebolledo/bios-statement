@@ -39,7 +39,7 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+            'host' => env('MAIL_HOST', 'in-v3.mailjet.com'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => env('MAIL_USERNAME'),
@@ -85,7 +85,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@cmatik.cl'),
+        'address' => env('MAIL_FROM_ADDRESS', 'sys-dbs@cmatik.app'),
         'name' => env('MAIL_FROM_NAME', 'DBS - CMATIK'),
     ],
 
