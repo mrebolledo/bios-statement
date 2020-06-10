@@ -86,7 +86,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'sys-dbs@cmatik.app'),
-        'name' => env('MAIL_FROM_NAME', 'DBSⓇ CMATIK'),
+        'name' => env('MAIL_FROM_NAME', 'DBS® CMATIK'),
     ],
 
     /*
