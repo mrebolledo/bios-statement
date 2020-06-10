@@ -20,7 +20,7 @@
         @if($ls->can_enter === 0)
             Por motivos de seguridad usted no esta autorizado para ingresar a los sectores productivos de Agricola Super Ltda, por favor contacte a su Jefe directo para resolver la situación.
         @else
-            Usted se encuentra autorizado a ingresar a los sectores productivos de Agricola Super Ltda, conservando las autorizaciones y respetando todas las normas de bioseguridad vigentes. Esta declaración tiene una vigencia de 7 días consecutivos, una vez terminado este plazo, para poder reingresar a granjas, completar nuevamente la declaración.
+            Usted se encuentra autorizado a ingresar a los sectores productivos de Agricola Super Ltda, conservando las autorizaciones y respetando todas las normas de bioseguridad vigentes. Esta declaración tiene una vigencia de 14 días consecutivos, una vez terminado este plazo, para poder reingresar a granjas, completar nuevamente la declaración.
         @endif
         <br><br>
         <h4><small>Código Verificación :</small> {{ $collaborator->statements()->orderBy('id','desc')->first()->verification_code }}</h4>
