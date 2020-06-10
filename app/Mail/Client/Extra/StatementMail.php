@@ -26,7 +26,7 @@ class StatementMail extends Mailable
      */
     public function build()
     {
-        return $this->from('sys-dbs@cmatik.app', 'CMATIK - DBS')
+        return $this->from('sys-dbs@cmatik.app', 'DBSⓇ CMATIK')
             ->subject('Declaración Jurada COVID-19')
             ->view('emails.client.extra.statement')
             ->with([
